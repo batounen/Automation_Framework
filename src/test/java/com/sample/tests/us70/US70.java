@@ -1,14 +1,13 @@
 package com.sample.tests.us70;
 
-import com.sample.pages.HomePage;
-import com.sample.pages.LoginPage;
-import com.sample.utils.DriverUtils;
+import com.sample.pages.Home;
+import com.sample.pages.Login;
+import com.sample.utils.Driver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.sql.DriverAction;
 import java.util.List;
 
 public class US70 {
@@ -24,32 +23,32 @@ public class US70 {
 
     @BeforeClass
     void setup() {
-        DriverUtils.getDriver(DriverUtils.getProperty("browser"));
+        Driver.getDriver(Driver.getProperty("browser"));
     }
 
     @AfterClass
     void tearDown() {
-        DriverUtils.closeDriver();
+        Driver.closeDriver();
     }
 
     @DataProvider(name = "dp")
     public Object[][] dp() {
-        List<String> usernames = DriverUtils.readCSV(0);
+        List<String> usernames = Driver.readCSV(0);
         Object[][] testData = new Object[usernames.size()][2];
         for (int i = 0; i < usernames.size(); i++) {
             testData[i][0] = usernames.get(i);
-            testData[i][1] = DriverUtils.getProperty("validPassword");
+            testData[i][1] = Driver.getProperty("validPassword");
         }
         return testData;
     }
 
     @Test(dataProvider = "dp")
     public void verify_visibility_allModules(String username, String password) {
-        LoginPage login = new LoginPage();
+        Login login = new Login();
         login.login_positive(username, password);
-        DriverUtils.sleep(5);
+        Driver.sleep(5);
 
-        HomePage homepage = new HomePage();
+        Home homepage = new Home();
 
         if (username.startsWith("user")) {
             homepage.verify_visibility_allModules("driver");
@@ -57,10 +56,10 @@ public class US70 {
             homepage.verify_visibility_allModules("manager");
         }
 
-        DriverUtils.captureHighlighted(homepage.getModuleBar());
-        DriverUtils.sleep(1);
+        Driver.captureHighlighted(homepage.getAllModuleBar());
+        Driver.sleep(1);
 
         homepage.logout();
-        DriverUtils.sleep(2);
+        Driver.sleep(2);
     }
 }
