@@ -33,22 +33,21 @@ public class US70 extends TestBase {
 
     @Test(dataProvider = "dp")
     public void verify_visibility_allModules(String username, String password) {
-        Login login = new Login();
+        login = new Login();
         login.login_positive(username, password);
         Driver.sleep(5);
 
-        Home homepage = new Home();
+        home = new Home();
 
         if (username.startsWith("user")) {
-            homepage.verify_visibility_allModules("driver");
+            home.verify_visibility_allModules("driver");
         } else if (username.startsWith("s")) {
-            homepage.verify_visibility_allModules("manager");
+            home.verify_visibility_allModules("manager");
         }
 
-        Driver.captureHighlighted(homepage.getAllModuleBar());
+        Driver.captureHighlighted(home.getAllModuleBar());
         Driver.sleep(1);
 
-        homepage.logout();
-        Driver.sleep(2);
+        home.logout();
     }
 }
