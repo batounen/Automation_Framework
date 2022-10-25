@@ -3,14 +3,13 @@ package com.sample.tests.us70;
 import com.sample.pages.Home;
 import com.sample.pages.Login;
 import com.sample.utils.Driver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import com.sample.utils.TestBase;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class US70 {
+public class US70 extends TestBase {
 
     /*
     As a user, I should be accessing all the main modules of the app.
@@ -20,16 +19,6 @@ public class US70 {
         AC #2: drivers should view 4 module names
         Expected module names: Fleet, Customers, Activities, System
      */
-
-    @BeforeClass
-    void setup() {
-        Driver.getDriver(Driver.getProperty("browser"));
-    }
-
-    @AfterClass
-    void tearDown() {
-        Driver.closeDriver();
-    }
 
     @DataProvider(name = "dp")
     public Object[][] dp() {
