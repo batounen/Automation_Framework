@@ -34,12 +34,10 @@ public class HowToUsePinbar {
 
     public void captureLinktext() {
         Driver.captureHighlighted(home.getPinbarLink());
-        Driver.sleep(1);
     }
 
     public void capturePinIcon() {
         Driver.captureHighlighted(pinIcon);
-        Driver.sleep(1);
     }
 
     public void guides_test() {
@@ -54,19 +52,11 @@ public class HowToUsePinbar {
 
     public void pinIcon_test() {
         assertTrue(pinIcon.isDisplayed());
-
         Driver.captureHighlighted(pinIcon);
-        Driver.sleep(1);
-
         pinIcon.click();
-
         Driver.captureHighlighted(pinIcon);
-        Driver.sleep(1);
-
         String classAttributeAfterClick = Driver.getDriver().findElement(By.cssSelector(".top-action-box :nth-child(2)")).getAttribute("class");
-
         assertEquals(classAttributeAfterClick, Driver.getProperty("pinAttribute"));
-
         pinIcon.click();
     }
 }
