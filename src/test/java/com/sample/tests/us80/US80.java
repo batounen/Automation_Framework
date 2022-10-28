@@ -20,12 +20,12 @@ public class US80 extends TestBase {
 
     @DataProvider(name = "dpManager")
     public Object[][] dp1() {
-        return Driver.readXLSX("manager");
+        return Driver.readXLSX(Driver.getProperty("excelFilePath_MD"), "manager");
     }
 
     @DataProvider(name = "dpDriver")
     public Object[][] dp2() {
-        return Driver.readXLSX("driver");
+        return Driver.readXLSX(Driver.getProperty("excelFilePath_MD"), "driver");
     }
 
     @Test(dataProvider = "dpManager", priority = 1)
@@ -38,7 +38,7 @@ public class US80 extends TestBase {
         login.login_positive(username, password);
         fleetModule.access_fleet_module(Driver.getProperty("vehicleOdometer"));
         vehicleOdometer.verify_error_msg();
-//        Driver.captureScreen();
+        Driver.captureScreen();
         home.logout();
     }
 
@@ -53,7 +53,7 @@ public class US80 extends TestBase {
         fleetModule.access_fleet_module(Driver.getProperty("vehicleOdometer"));
         vehicleOdometer.verify_default_page_test();
         Driver.sleep(1);
-//        Driver.captureScreen();
+        Driver.captureScreen();
         home.logout();
     }
 
@@ -68,7 +68,7 @@ public class US80 extends TestBase {
         fleetModule.access_fleet_module(Driver.getProperty("vehicleOdometer"));
         vehicleOdometer.verify_default_view_per_page_test();
         Driver.sleep(1);
-//        Driver.captureScreen();
+        Driver.captureScreen();
         home.logout();
     }
 

@@ -131,10 +131,12 @@ public class Home extends TestBase {
     }
 
     public void logout() {
-        login = new Login();
-        Driver.waitUntilClickable(userInfo, 10);
+//        login = new Login();
+//        Driver.waitUntilClickable(userInfo, 10);
         userInfo.click();
+//        Driver.waitUntilClickable(logoutButton, 10);
         logoutButton.click();
-        Driver.waitUntilClickable(login.getLoginButton(), 10);
+//        Driver.waitUntilClickable(login.getLoginButton(), 10);
+        Driver.sleep(2);
     }
 }

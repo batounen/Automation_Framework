@@ -25,12 +25,14 @@ public class ActivitiesModule extends TestBase {
             case "Calls":
                 Driver.captureHighlighted(call);
                 call.click();
-                Driver.waitUntilClickable(calls.getLogCallButton(), 10);
+                Driver.sleep(2);
+//                Driver.waitUntilClickable(calls.getLogCallButton(), 10);
                 break;
             case "Calendar Events":
                 Driver.captureHighlighted(calendarEvent);
                 calendarEvent.click();
-                Driver.waitUntilClickable(calendarEvents.getCreateCalendarEventButton(), 10);
+                Driver.sleep(2);
+//                Driver.waitUntilClickable(calendarEvents.getCreateCalendarEventButton(), 10);
                 break;
         }
     }

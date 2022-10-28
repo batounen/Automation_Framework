@@ -40,16 +40,17 @@ public class US82 extends TestBase {
 
     @Test(dataProvider = "dp", priority = 2)
     public void vehicle_cost_checkAllBox_test(String username, String password) {
-        login = new Login();
-        home = new Home();
-        fleetModule = new FleetModule();
-        vehihcleCosts = new VehihcleCosts();
+        if (username.startsWith("s")) {
+            login = new Login();
+            home = new Home();
+            fleetModule = new FleetModule();
+            vehihcleCosts = new VehihcleCosts();
 
-        login.login_positive(username, password);
-        fleetModule.access_fleet_module(Driver.getProperty("vehicleCosts"));
-        vehihcleCosts.verifyCheckAllVehicleBox();
+            login.login_positive(username, password);
+            fleetModule.access_fleet_module(Driver.getProperty("vehicleCosts"));
+            vehihcleCosts.verifyCheckAllVehicleBox();
 //        Driver.captureScreen();
-        home.logout();
+            home.logout();
+        }
     }
-
 }

@@ -46,7 +46,8 @@ public class Login extends TestBase {
             usernameBox.sendKeys(username);
             passwordBox.sendKeys(password);
             loginButton.click();
-            Driver.waitUntilClickable(home.getGetHelp(), 10);
+//            Driver.waitUntilClickable(home.getGetHelp(), 10);
+            Driver.sleep(5);
             assertEquals(Driver.getDriver().getTitle(), Driver.getProperty("homepage"));
         } else {
             System.out.println("Incorrect Login Page detected!");

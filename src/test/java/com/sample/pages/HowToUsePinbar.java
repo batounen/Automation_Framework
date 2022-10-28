@@ -54,6 +54,7 @@ public class HowToUsePinbar {
         assertTrue(pinIcon.isDisplayed());
         Driver.captureHighlighted(pinIcon);
         pinIcon.click();
+        Driver.sleep(1);
         Driver.captureHighlighted(pinIcon);
         String classAttributeAfterClick = Driver.getDriver().findElement(By.cssSelector(".top-action-box :nth-child(2)")).getAttribute("class");
         assertEquals(classAttributeAfterClick, Driver.getProperty("pinAttribute"));
