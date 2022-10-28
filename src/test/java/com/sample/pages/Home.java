@@ -57,6 +57,9 @@ public class Home extends TestBase {
     @FindBy(css = ".fa-question-circle")
     private WebElement getHelp;
 
+    @FindBy(css = ".fa-share-square")
+    private WebElement shortcutsArrow;
+
     @FindBy(css = ".action-wrapper a[href='/contact']")
     private WebElement viewAll;
 
@@ -66,8 +69,16 @@ public class Home extends TestBase {
     @FindBy(css = "[role] .no-hash")
     private WebElement logoutButton;
 
+    public WebElement getGetHelp() {
+        return getHelp;
+    }
+
     public WebElement getViewAll() {
         return viewAll;
+    }
+
+    public WebElement getShortcutsArrow() {
+        return shortcutsArrow;
     }
 
     public void verify_visibility_allModules(String userType) {
@@ -82,7 +93,6 @@ public class Home extends TestBase {
         if (userType.equalsIgnoreCase("manager")) {
             assertEquals(actualModuleNames, managerModules);
         } else if (userType.equalsIgnoreCase("driver")) {
-            System.out.println(actualModules);
             assertEquals(actualModuleNames, driverModules);
         }
     }
@@ -121,9 +131,10 @@ public class Home extends TestBase {
     }
 
     public void logout() {
+        login = new Login();
+        Driver.waitUntilClickable(userInfo, 10);
         userInfo.click();
         logoutButton.click();
         Driver.waitUntilClickable(login.getLoginButton(), 10);
     }
-
 }
