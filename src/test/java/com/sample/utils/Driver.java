@@ -31,7 +31,7 @@ public final class Driver {
 
     static {
         try {
-            FileInputStream file = new FileInputStream("us81.properties");
+            FileInputStream file = new FileInputStream("smoke.properties");
             properties.load(file);
             file.close();
         } catch (IOException e) {
@@ -39,6 +39,18 @@ public final class Driver {
         }
     }
 
+    /**
+     * Method to load information from .properties file
+     */
+    public static void loadProperties(String fileName) {
+        try {
+            FileInputStream file = new FileInputStream(fileName);
+            properties.load(file);
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Private constructor to restrict access of object creation
      */
@@ -137,6 +149,32 @@ public final class Driver {
         Object[][] testData = null;
         try {
             File file = new File(getProperty("excelFilePath"));
+            FileInputStream fis = new FileInputStream(file);
+            Workbook wb = WorkbookFactory.create(fis);
+            Sheet sheet = wb.getSheet(sheetName);
+            int totalRows = sheet.getLastRowNum() + 1;
+            Row rowCells = sheet.getRow(0);
+            int totalColumns = rowCells.getLastCellNum();
+            DataFormatter format = new DataFormatter();
+            testData = new Object[totalRows][totalColumns];
+            for (int i = 0; i < totalRows; i++) {
+                for (int j = 0; j < totalColumns; j++) {
+                    testData[i][j] = format.formatCellValue(sheet.getRow(i).getCell(j));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return testData;
+    }
+
+    /**
+     * Method that accepts File path and Sheet name as arguments to read data from Excel file and return Object[][]
+     */
+    public static Object[][] readXLSX(String filePath, String sheetName) {
+        Object[][] testData = null;
+        try {
+            File file = new File(filePath);
             FileInputStream fis = new FileInputStream(file);
             Workbook wb = WorkbookFactory.create(fis);
             Sheet sheet = wb.getSheet(sheetName);
@@ -315,7 +353,7 @@ public final class Driver {
      */
     public static void waitUntilClickable(WebElement element, int seconds) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), seconds);
-        wait.until(ExpectedConditions.invisibilityOf(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     /**
