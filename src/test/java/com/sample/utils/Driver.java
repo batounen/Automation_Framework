@@ -202,7 +202,7 @@ public final class Driver {
             String minSec = dtf.format(localTime).replace(":", "");
             File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(file, new File(getProperty("screenShotSavePath") + minSec + getProperty("screenShotExtension")));
-            Driver.sleep(1);
+            sleep(1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -218,7 +218,7 @@ public final class Driver {
             String minSec = dtf.format(localTime).replace(":", "");
             Screenshot ss = new AShot().takeScreenshot(driver);
             ImageIO.write(ss.getImage(), getProperty("screenShotExtension"), new File(getProperty("screenShotSavePath") + minSec));
-            Driver.sleep(1);
+            sleep(1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -234,7 +234,7 @@ public final class Driver {
             String minSec = dtf.format(localTime).replace(":", "");
             Screenshot ss = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver, element);
             ImageIO.write(ss.getImage(), getProperty("screenShotExtension"), new File(getProperty("screenShotSavePath") + minSec));
-            Driver.sleep(1);
+            sleep(1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -257,7 +257,7 @@ public final class Driver {
             sleep(1);
             File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(file, new File(getProperty("screenShotSavePath") + minSec + getProperty("screenShotExtension")), true);
-            Driver.sleep(1);
+            sleep(1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -306,6 +306,14 @@ public final class Driver {
      * Method to wait explicitly until the WebElement is invisible
      */
     public static void waitUntilInvisible(WebElement element, int seconds) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), seconds);
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    /**
+     * Method to wait explicitly until the WebElement is clickable
+     */
+    public static void waitUntilClickable(WebElement element, int seconds) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), seconds);
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
