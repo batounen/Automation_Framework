@@ -234,16 +234,16 @@ public final class Driver {
      * Method to take full screenshot
      */
     public static void captureScreen() {
-        try {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm:ss");
-            LocalTime localTime = LocalTime.now();
-            String minSec = dtf.format(localTime).replace(":", "");
-            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(file, new File(getProperty("screenShotSavePath") + minSec + getProperty("screenShotExtension")));
-            sleep(1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm:ss");
+//            LocalTime localTime = LocalTime.now();
+//            String minSec = dtf.format(localTime).replace(":", "");
+//            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//            FileUtils.copyFile(file, new File(getProperty("screenShotSavePath") + minSec + getProperty("screenShotExtension")));
+//            sleep(1);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -282,23 +282,23 @@ public final class Driver {
      * Method to highlight a WebElement and take screenshot
      */
     public static void captureHighlighted(WebElement element) {
-        try {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm:ss");
-            LocalTime localTime = LocalTime.now();
-            String minSec = dtf.format(localTime).replace(":", "");
-            JavascriptExecutor jse = (JavascriptExecutor) driver;
-            if (getProperty("needBackground").equalsIgnoreCase("yes")) {
-                jse.executeScript("arguments[0].setAttribute('style', 'border:" + getProperty("highlightBorderSize") + "px solid " + getProperty("highlightBorderColor") + "; background:" + getProperty("backgroundColor") + "')", element);
-            } else if (getProperty("needBackground").equalsIgnoreCase("no")) {
-                jse.executeScript("arguments[0].style.border='" + getProperty("highlightBorderSize") + "px solid " + getProperty("highlightBorderColor") + "'", element);
-            }
-            sleep(1);
-            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(file, new File(getProperty("screenShotSavePath") + minSec + getProperty("screenShotExtension")), true);
-            sleep(1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm:ss");
+//            LocalTime localTime = LocalTime.now();
+//            String minSec = dtf.format(localTime).replace(":", "");
+//            JavascriptExecutor jse = (JavascriptExecutor) driver;
+//            if (getProperty("needBackground").equalsIgnoreCase("yes")) {
+//                jse.executeScript("arguments[0].setAttribute('style', 'border:" + getProperty("highlightBorderSize") + "px solid " + getProperty("highlightBorderColor") + "; background:" + getProperty("backgroundColor") + "')", element);
+//            } else if (getProperty("needBackground").equalsIgnoreCase("no")) {
+//                jse.executeScript("arguments[0].style.border='" + getProperty("highlightBorderSize") + "px solid " + getProperty("highlightBorderColor") + "'", element);
+//            }
+//            sleep(1);
+//            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//            FileUtils.copyFile(file, new File(getProperty("screenShotSavePath") + minSec + getProperty("screenShotExtension")), true);
+//            sleep(1);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
