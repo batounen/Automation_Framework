@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Bato/IdeaProjects/Automation_Framework">
+        <classes>
+            <class name="com.sample.tests.us70.US70">
+                <methods>
+                    <include name="verify_visibility_allModules"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us71.US71">
+                <methods>
+                    <include name="oroinc_doc_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us72.US72">
+                <methods>
+                    <include name="testCase1"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us73.US73">
+                <methods>
+                    <include name="vehicle_access_managers_test"/>
+                    <include name="vehicle_access_drivers_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us74.US74">
+                <methods>
+                    <include name="vehicle_models_columns_manager_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us75.US75">
+                <methods>
+                    <include name="vehicle_edit_buttons_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us76.US76">
+                <methods>
+                    <include name="all_vehicles_unchecked_manager_test"/>
+                    <include name="select_all_vehicles_manager_test"/>
+                    <include name="select_any_vehicle_manager_test"/>
+                    <include name="all_vehicles_unchecked_driver_test"/>
+                    <include name="select_all_vehicles_driver_test"/>
+                    <include name="select_any_vehicle_driver_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us77.US77">
+                <methods>
+                    <include name="verify_default_repeat_interval_test"/>
+                    <include name="verify_repeat_interval_cantBe_empty_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us78.US78">
+                <methods>
+                    <include name="verify_default_repeat_interval_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us79.US79">
+                <methods>
+                    <include name="type_description_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us80.US80">
+                <methods>
+                    <include name="vehicle_odometer_access_manager_test"/>
+                    <include name="vehicle_odometer_default_page_driver_test"/>
+                    <include name="vehicle_odometer_access_driver_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us81.US81">
+                <methods>
+                    <include name="verify_customer_account_filters_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us82.US82">
+                <methods>
+                    <include name="vehicle_cost_filters_test"/>
+                    <include name="vehicle_cost_checkAllBox_test"/>
+                </methods>
+            </class>
+            <class name="com.sample.tests.us83.US83">
+                <methods>
+                    <include name="campaign_filters_test"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
