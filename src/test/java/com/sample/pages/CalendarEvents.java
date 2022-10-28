@@ -14,6 +14,10 @@ public class CalendarEvents {
     @FindBy(css = ".btn-primary")
     private WebElement createCalendarEventButton;
 
+    public WebElement getCreateCalendarEventButton() {
+        return createCalendarEventButton;
+    }
+
     public void clickCreateCalendarEventButton() {
         createCalendarEventButton.click();
         Driver.waitForTitle(Driver.getProperty("createCalendarEvent"), 10);

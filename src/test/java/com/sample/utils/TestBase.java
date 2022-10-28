@@ -6,18 +6,20 @@ import org.testng.annotations.BeforeClass;
 
 public class TestBase {
 
-    public Login login;
-    public Home home;
-    public HowToUsePinbar pinbar;
-    public FleetModule fleetModule;
     public ActivitiesModule activitiesModule;
     public CalendarEvents calendarEvents;
+    public Calls calls;
     public CreateCalendarEvent createCalendarEvent;
-    public VehicleOdometer vehicleOdometer;
     public CustomerAccounts customerAccounts;
-    public VehihcleCosts vehihcleCosts;
+    public FleetModule fleetModule;
+    public Home home;
+    public HowToUsePinbar pinbar;
+    public Login login;
     public Marketing marketing;
     public MarketingCampaigns marketingCampaigns;
+    public VehihcleCosts vehihcleCosts;
+    public VehicleOdometer vehicleOdometer;
+
 
     @BeforeClass
     public void setup() {

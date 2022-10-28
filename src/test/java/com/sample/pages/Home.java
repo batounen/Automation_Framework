@@ -1,6 +1,7 @@
 package com.sample.pages;
 
 import com.sample.utils.Driver;
+import com.sample.utils.TestBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
@@ -14,7 +15,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class Home {
+public class Home extends TestBase {
 
     public Home() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -56,11 +57,18 @@ public class Home {
     @FindBy(css = ".fa-question-circle")
     private WebElement getHelp;
 
+    @FindBy(css = ".action-wrapper a[href='/contact']")
+    private WebElement viewAll;
+
     @FindBy(css = "#user-menu")
     private WebElement userInfo;
 
     @FindBy(css = "[role] .no-hash")
     private WebElement logoutButton;
+
+    public WebElement getViewAll() {
+        return viewAll;
+    }
 
     public void verify_visibility_allModules(String userType) {
         List<String> driverModules = new ArrayList<>(Arrays.asList("Fleet", "Customers", "Activities", "System"));
@@ -99,7 +107,6 @@ public class Home {
             }
         }
         Driver.captureScreen();
-        Driver.sleep(1);
         Driver.getDriver().close();
         Driver.getDriver().switchTo().window(mainWindowHandle);
     }
@@ -116,8 +123,7 @@ public class Home {
     public void logout() {
         userInfo.click();
         logoutButton.click();
-        Driver.waitForTitle(Driver.getProperty("login"), 10);
-        Driver.sleep(2);
+        Driver.waitUntilClickable(login.getLoginButton(), 10);
     }
 
 }
