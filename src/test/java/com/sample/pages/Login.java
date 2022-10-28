@@ -40,12 +40,13 @@ public class Login extends TestBase {
     }
 
     public void login_positive(String username, String password) {
+        home = new Home();
         Driver.getDriver().get(Driver.getProperty("env"));
         if (Driver.verifyTitle(Driver.getProperty("login"))) {
             usernameBox.sendKeys(username);
             passwordBox.sendKeys(password);
             loginButton.click();
-            Driver.waitUntilClickable(home.getViewAll(), 10);
+            Driver.waitUntilClickable(home.getGetHelp(), 10);
             assertEquals(Driver.getDriver().getTitle(), Driver.getProperty("homepage"));
         } else {
             System.out.println("Incorrect Login Page detected!");
