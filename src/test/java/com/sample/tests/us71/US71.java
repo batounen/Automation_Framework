@@ -21,12 +21,10 @@ public class US71 extends TestBase {
     @Test(dataProvider = "dp")
     public void oroinc_doc_test(String username, String password) {
         login = new Login();
-        login.login_positive(username, password);
-        Driver.sleep(3);
-
         home = new Home();
-        home.getHelp_button_test();
 
+        login.login_positive(username, password);
+        home.getHelp_button_test();
         home.logout();
     }
 
