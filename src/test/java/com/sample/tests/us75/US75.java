@@ -31,6 +31,4 @@ public class US75 extends TestBase {
         fleetModule.vehicle_info_edit_verification_test();
         home.logout();
     }
-
-
 }
