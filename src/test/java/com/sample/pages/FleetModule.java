@@ -131,6 +131,7 @@ public class FleetModule {
 
     public void vehicle_info_edit_verification_test() {
         for (WebElement each : threeDotsToEditVehicleInfo) {
+            Driver.waitUntilClickable(each, 10);
             Actions action = new Actions(Driver.getDriver());
             action.moveToElement(each).perform();
             assertTrue(viewIcon.isDisplayed());
@@ -148,6 +149,7 @@ public class FleetModule {
     public void selectAllBox_verification_test() {
         Driver.captureHighlighted(checkAllBox);
         checkAllBox.click();
+        Driver.sleep(1);
         Driver.captureScreen();
         for (WebElement eachBox : allVehicleCheckboxes) {
             assertTrue(eachBox.isSelected());
